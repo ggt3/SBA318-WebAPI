@@ -1,5 +1,6 @@
 import express from "express";
-import users from "../models/users.js";
+import pets from "../data/pets.js";
+import users from "../data/users.js"
 
 const router = new express.Router();
 

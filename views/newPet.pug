@@ -1,14 +1,16 @@
 html
     head
-        title=title 
+        h1 Create your new pet!
     body
         h1=message
-        form(action="/success", method='POST')
-            label title: 
-                input(type='text', name='title', value='')
-            label year: 
-                input(type='text', name='year', value='')
+        form(action="/api/pets/success", method='POST')
+            label Name: 
+                input(type='text', name='name', value='')
+            label Owner Name: 
+                input(type='text', name='owner', value='')
+            label species: 
+                input(type='text', name='species', value='')
+            label color:
+                input(type='text', name='color', value='')
             input(type='submit', value='Submit')
         
-        a(href="/spheal") 
-            button download

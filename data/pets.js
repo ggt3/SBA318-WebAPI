@@ -1,4 +1,4 @@
-const pets = [
+ const pets = [
     {
         id: 1,
         name: "SillyGoose",
@@ -9,7 +9,7 @@ const pets = [
 
       },
          {
-        id: 1,
+        id: 2,
         name: "SmokyBear",
         username: "cyare23",
         species: "goat",
@@ -18,3 +18,5 @@ const pets = [
         
       },  
 ]
+
+export default pets
