@@ -19,7 +19,7 @@ router.get("/",  (req, res) => {
 //create a new user
 router.post("/", (req, res) => {
   try {
-    if (users.find((u) => u.username == req.body.username)) {
+    if (users.find((u) => u.username === req.body.username)) {
       res.json({ error: "Username Already Taken" });
       return;
     }
@@ -41,5 +41,6 @@ router.post("/", (req, res) => {
   }
 });
 
-
+//gets all pets of username
+router.get("/:username/pets")
 export default router;

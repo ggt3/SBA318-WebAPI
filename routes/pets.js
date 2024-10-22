@@ -45,8 +45,11 @@ router.post("/success", (req, res) => {
       res.json({ error: "Pet Name Already Taken" });
       return;
     }
-    if (!users.find((u) => u.username === req.body.owner)) {
-      res.json({ error: "" });
+    if (!users.find((u) => {u.username === req.body.owner
+        console.log(u.username)
+    })) {
+
+        res.json({ error: "Invalid Owner, not in System. Enter Valid owner username." });
       return;
     }
 
@@ -58,9 +61,15 @@ router.post("/success", (req, res) => {
       color: req.body.color,
       level: 1,
     };
-    //TODO: add the pet to the user's pet list
-    console.log(newPet);
+    
     pets.push(newPet);
+    //add the pet to the user's pet list
+    users.find((u,i)=> {
+       if (u.username === req.body.owner ) {
+        u.pets.push(newPet.id)
+        console.log(u)
+        return true;
+      }})
     // res.json(pets[pets.length - 1]);
     res.render("success", {
       name: req.body.name,
@@ -75,6 +84,20 @@ router.post("/success", (req, res) => {
 
 //rename your pet 
 router.patch( "/:name/rename", (req,res) => {
+    const targetPet = pets.find((p, i) => {
+        if (p.name === req.params.name) {
+          for (const key in req.body) {
+            pets[i][key] = req.body[key];
+          }
+          return true;
+        }
+    })
+}
+)
+
+//returns all the types of species created
+router.get("/?species", (req,res)=> {
 
 })
+
 export default router;
